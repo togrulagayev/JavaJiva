@@ -2,6 +2,10 @@ import 'package:coffee_shop/constants/theme/const_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const double kDefaultLetterSpacing = 1.0;
+const double kPrimaryLineHeight = 1.5;
+const double kSecondaryLineHeight = 1.2;
+
 final onboardTextStyle = GoogleFonts.sora(
   fontSize: 32,
   color: Colors.white,

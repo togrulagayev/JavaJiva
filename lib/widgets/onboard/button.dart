@@ -9,9 +9,11 @@ class OnboardButtonWidget extends StatelessWidget {
   const OnboardButtonWidget({
     super.key,
     required this.sw,
+    required this.sh,
   });
 
   final double sw;
+  final double sh;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class OnboardButtonWidget extends StatelessWidget {
           ),
         ),
         minimumSize: WidgetStateProperty.all(
-          Size(sw * 0.8, 56),
+          Size(sw * 0.8, sh * 0.07),
         ),
         padding: WidgetStateProperty.all(
           const EdgeInsets.symmetric(

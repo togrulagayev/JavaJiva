@@ -14,11 +14,9 @@ class OnboardImageWidget extends StatelessWidget {
       width: double.infinity,
       height: sh * 0.66,
       decoration: const BoxDecoration(),
-      child: Center(
-        child: Image.asset(
-          'assets/images/onboard.png',
-          fit: BoxFit.cover,
-        ),
+      child: Image.asset(
+        'assets/images/onboard.png',
+        fit: BoxFit.cover,
       ),
     );
   }

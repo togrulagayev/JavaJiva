@@ -12,6 +12,7 @@ class OnboardScreen extends StatelessWidget {
     final double sh = MediaQuery.of(context).size.height;
     final double sw = MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xff000000),
       body: Column(
         children: [
@@ -26,7 +27,7 @@ class OnboardScreen extends StatelessWidget {
                 const SizedBox(height: 8),
                 const OnboardSubTextWidget(),
                 const SizedBox(height: 32),
-                OnboardButtonWidget(sw: sw),
+                OnboardButtonWidget(sw: sw, sh: sh),
               ],
             ),
           )
