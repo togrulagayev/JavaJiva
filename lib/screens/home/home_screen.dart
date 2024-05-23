@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../widgets/home/categories.dart';
 import '../../widgets/home/location.dart';
 import '../../widgets/home/search.dart';
 
@@ -66,6 +67,12 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    HomeCategoriesWidget(sw: sw, sh: sh),
+                    const SizedBox(height: 16),
+                    // HomeGridWidget(sw: sw, sh: sh),
                   ],
                 ),
               ),
