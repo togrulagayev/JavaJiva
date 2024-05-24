@@ -58,7 +58,7 @@ class ApiService {
     return [];
   }
 
-  getEspresso() async {
+  Future<List<CoffeeModel>> getEspresso() async {
     const url = 'https://www.jsonkeeper.com/b/S7ET';
 
     try {
@@ -72,9 +72,10 @@ class ApiService {
     } on DioException catch (e) {
       debugPrint(e.message);
     }
+    return [];
   }
 
-  getTurkish() async {
+  Future<List<CoffeeModel>> getTurkish() async {
     const url = 'https://www.jsonkeeper.com/b/S7ET';
 
     try {
@@ -88,9 +89,10 @@ class ApiService {
     } on DioException catch (e) {
       debugPrint(e.message);
     }
+    return [];
   }
 
-  getAmericano() async {
+  Future<List<CoffeeModel>> getAmericano() async {
     const url = 'https://www.jsonkeeper.com/b/S7ET';
 
     try {
@@ -104,9 +106,10 @@ class ApiService {
     } on DioException catch (e) {
       debugPrint(e.message);
     }
+    return [];
   }
 
-  getMocha() async {
+  Future<List<CoffeeModel>> getMocha() async {
     const url = 'https://www.jsonkeeper.com/b/S7ET';
 
     try {
@@ -120,9 +123,10 @@ class ApiService {
     } on DioException catch (e) {
       debugPrint(e.message);
     }
+    return [];
   }
 
-  getMachiato() async {
+  Future<List<CoffeeModel>> getMachiato() async {
     const url = 'https://www.jsonkeeper.com/b/S7ET';
 
     try {
@@ -136,5 +140,6 @@ class ApiService {
     } on DioException catch (e) {
       debugPrint(e.message);
     }
+    return [];
   }
 }

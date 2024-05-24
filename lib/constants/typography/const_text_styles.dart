@@ -30,7 +30,32 @@ final whiteSemi16 = GoogleFonts.sora(
 
 final primarySemi16 = GoogleFonts.sora(
   fontSize: 16,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.w700,
   color: primaryTextColor,
+  height: 1.5,
+);
+
+final primarySemi12 = GoogleFonts.sora(
+  fontSize: 12,
+  color: tertiaryTextColor,
+  height: 1.2,
+);
+
+final primarySemi18 = GoogleFonts.sora(
+  fontSize: 18,
+  fontWeight: FontWeight.w700,
+  color: const Color(0xFF050505),
+  height: 1.5,
+);
+
+final categorySemi14 = GoogleFonts.sora(
+  fontSize: 14,
+  fontWeight: FontWeight.w700,
+  color: const Color(0xffffffff),
+  height: 1.5,
+);
+final categoryReg14 = GoogleFonts.sora(
+  fontSize: 14,
+  color: const Color(0xff313131),
   height: 1.5,
 );

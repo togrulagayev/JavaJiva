@@ -1,6 +1,7 @@
 import 'package:coffee_shop/constants/theme/const_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/typography/const_text_styles.dart';
 import '../../services/api_service.dart';
 
 class HomeCategoriesWidget extends StatefulWidget {
@@ -19,7 +20,7 @@ class HomeCategoriesWidget extends StatefulWidget {
 
 class _HomeCategoriesWidgetState extends State<HomeCategoriesWidget> {
   late int _selectedIndex;
-  late Future _future;
+  late Future<List<String>> _future;
   @override
   void initState() {
     _future = ApiService().getCoffeeTypes();
@@ -60,10 +61,20 @@ class _HomeCategoriesWidgetState extends State<HomeCategoriesWidget> {
                             ? buttonBackgroudColor
                             : buttonForegroudColor,
                       ),
+                      foregroundColor: WidgetStateProperty.all(
+                        _selectedIndex == index
+                            ? Colors.white
+                            : const Color(0xFF313131),
+                      ),
                       shape: WidgetStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6.0),
                         ),
+                      ),
+                      textStyle: WidgetStateProperty.all(
+                        _selectedIndex == index
+                            ? categorySemi14
+                            : categoryReg14,
                       ),
                     ),
                     onPressed: () {
