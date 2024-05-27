@@ -1,6 +1,5 @@
+import 'package:coffee_shop/screens/onboard/onboard_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/onboard/onboard_screen.dart';
 
 void main() => runApp(const JavaJiveApp());
 

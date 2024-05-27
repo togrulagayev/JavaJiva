@@ -5,10 +5,9 @@ import 'package:flutter/widgets.dart';
 class ApiService {
   //
   //
+  final String url = 'https://www.jsonkeeper.com/b/7K9O';
 
   Future<List<String>> getCoffeeTypes() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
@@ -25,8 +24,6 @@ class ApiService {
 
   //
   Future<List<CoffeeModel>> getCappucino() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
@@ -42,8 +39,6 @@ class ApiService {
   }
 
   Future<List<CoffeeModel>> getLatte() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
@@ -59,8 +54,6 @@ class ApiService {
   }
 
   Future<List<CoffeeModel>> getEspresso() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
@@ -76,8 +69,6 @@ class ApiService {
   }
 
   Future<List<CoffeeModel>> getTurkish() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
@@ -93,8 +84,6 @@ class ApiService {
   }
 
   Future<List<CoffeeModel>> getAmericano() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
@@ -110,8 +99,6 @@ class ApiService {
   }
 
   Future<List<CoffeeModel>> getMocha() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
@@ -127,8 +114,6 @@ class ApiService {
   }
 
   Future<List<CoffeeModel>> getMachiato() async {
-    const url = 'https://www.jsonkeeper.com/b/S7ET';
-
     try {
       var response = await Dio().get(url);
       if (response.statusCode == 200) {
