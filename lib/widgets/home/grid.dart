@@ -63,6 +63,7 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                         context,
                         CupertinoPageRoute(
                           builder: (context) => DetailScreen(
+                            description: data[index].description,
                             image: data[index].imageUrl,
                             title: data[index].title,
                             subtitle: data[index].subTitle,

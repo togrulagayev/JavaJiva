@@ -30,12 +30,18 @@ final whiteSemi16 = GoogleFonts.sora(
 
 final primarySemi16 = GoogleFonts.sora(
   fontSize: 16,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.bold,
   color: primaryTextColor,
   height: 1.5,
 );
 
-final primarySemi12 = GoogleFonts.sora(
+final secondary14 = GoogleFonts.sora(
+  fontSize: 14,
+  fontWeight: FontWeight.normal,
+  height: 1.5,
+  color: tertiaryTextColor,
+);
+final TextStyle primarySemi12 = GoogleFonts.sora(
   fontSize: 12,
   color: tertiaryTextColor,
   height: 1.2,

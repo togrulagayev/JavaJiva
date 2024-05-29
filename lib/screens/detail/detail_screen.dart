@@ -1,10 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:coffee_shop/constants/theme/const_colors.dart';
+import 'package:coffee_shop/constants/typography/const_text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/detail/detail_appbar.dart';
+import '../../widgets/detail/detail_buying.dart';
+import '../../widgets/detail/detail_coffee.dart';
+import '../../widgets/detail/detail_description.dart';
+import '../../widgets/detail/detail_size.dart';
 
 class DetailScreen extends StatelessWidget {
   final String image;
@@ -16,6 +18,7 @@ class DetailScreen extends StatelessWidget {
   final String rating;
 
   final String votes;
+  final String description;
   const DetailScreen({
     super.key,
     required this.image,
@@ -23,6 +26,7 @@ class DetailScreen extends StatelessWidget {
     required this.subtitle,
     required this.rating,
     required this.votes,
+    required this.description,
   });
 
   @override
@@ -42,101 +46,22 @@ class DetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: GoogleFonts.sora(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
-                        height: 1.5,
-                        color: primaryTextColor,
-                      ),
-                    ),
-                    const SizedBox(height: 4.0),
-                    Text(
-                      subtitle,
-                      style: GoogleFonts.sora(
-                        fontSize: 12,
-                        fontWeight: FontWeight.normal,
-                        height: 1.2,
-                        color: tertiaryTextColor,
-                      ),
-                    ),
-                    const SizedBox(height: 16.0),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/star.svg',
-                          width: 20,
-                          height: 20,
-                        ),
-                        const SizedBox(width: 4.0),
-                        Text(rating),
-                        const SizedBox(width: 8.0),
-                        Text(
-                          '($votes )',
-                          style: GoogleFonts.sora(
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
-                            height: 1.2,
-                            color: tertiaryTextColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                const DetailSuperiorityWidget(svg: 'bike'),
-                const SizedBox(width: 16),
-                const DetailSuperiorityWidget(svg: 'bean'),
-                const SizedBox(width: 16),
-                const DetailSuperiorityWidget(svg: 'milk'),
-              ],
+            DetailCoffeeWidget(
+                title: title, subtitle: subtitle, rating: rating, votes: votes),
+            const SizedBox(height: 16.0),
+            DetailDescriptionWidget(description: description),
+            const SizedBox(height: 24.0),
+            Text(
+              'Size',
+              style: primarySemi16,
             ),
             const SizedBox(height: 16.0),
-            const Center(
-              child: Divider(
-                color: Color(0xffE3E3E3),
-                thickness: 1,
-                indent: 20,
-                endIndent: 20,
-              ),
-            ),
+            const DetailCoffeeSizeWidget(),
+            const SizedBox(height: 24.0),
           ],
         ),
       ),
-    );
-  }
-}
-
-class DetailSuperiorityWidget extends StatelessWidget {
-  final String svg;
-  const DetailSuperiorityWidget({
-    super.key,
-    required this.svg,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 44,
-      padding: const EdgeInsets.all(6.0),
-      height: 44,
-      decoration: BoxDecoration(
-        color: const Color(0xFFEDEDED).withOpacity(0.35),
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: SvgPicture.asset(
-        'assets/icons/$svg.svg',
-        width: 24,
-        height: 24,
-      ),
+      bottomNavigationBar: const DetailBuyingWidget(),
     );
   }
 }
