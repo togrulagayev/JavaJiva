@@ -69,6 +69,7 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                             subtitle: data[index].subTitle,
                             rating: data[index].rating.toString(),
                             votes: data[index].voteCount.toString(),
+                            price: data[index].price,
                           ),
                         ),
                       );

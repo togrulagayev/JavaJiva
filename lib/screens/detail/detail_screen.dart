@@ -19,6 +19,8 @@ class DetailScreen extends StatelessWidget {
 
   final String votes;
   final String description;
+
+  final double price;
   const DetailScreen({
     super.key,
     required this.image,
@@ -27,6 +29,7 @@ class DetailScreen extends StatelessWidget {
     required this.rating,
     required this.votes,
     required this.description,
+    required this.price,
   });
 
   @override
@@ -61,7 +64,12 @@ class DetailScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const DetailBuyingWidget(),
+      bottomNavigationBar: DetailBuyingWidget(
+        url: image,
+        title: title,
+        subtitle: subtitle,
+        price: price,
+      ),
     );
   }
 }

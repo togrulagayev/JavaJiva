@@ -51,8 +51,8 @@ class _DetailCoffeeSizeWidgetState extends State<DetailCoffeeSizeWidget> {
                 ),
                 border: Border.all(
                   color: selectedIndex == index
-                      ? borderColor
-                      : const Color(0xffE3E3E3),
+                      ? buttonBackgroudColor
+                      : borderColor,
                 ),
                 color:
                     selectedIndex == index ? bgColor : const Color(0xFFFFFFFF),

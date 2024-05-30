@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:coffee_shop/screens/order/order_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,19 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../constants/theme/const_colors.dart';
 
 class DetailBuyingWidget extends StatelessWidget {
+  final String url;
+
+  final String title;
+  final String subtitle;
+
+  final double price;
+
   const DetailBuyingWidget({
     super.key,
+    required this.url,
+    required this.title,
+    required this.subtitle,
+    required this.price,
   });
 
   @override
@@ -43,7 +55,7 @@ class DetailBuyingWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    '\$ 4.50',
+                    '\$ $price',
                     style: GoogleFonts.sora(
                         color: buttonBackgroudColor,
                         fontSize: 18,
@@ -73,7 +85,12 @@ class DetailBuyingWidget extends StatelessWidget {
                     Navigator.push(
                       context,
                       CupertinoPageRoute(
-                        builder: (context) => const OrderScreen(),
+                        builder: (context) => OrderScreen(
+                          url: url,
+                          title: title,
+                          subtitle: subtitle,
+                          price: price,
+                        ),
                       ),
                     );
                   },
