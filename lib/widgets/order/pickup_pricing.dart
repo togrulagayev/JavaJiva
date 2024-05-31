@@ -7,15 +7,15 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../constants/theme/const_colors.dart';
 import '../../constants/typography/const_text_styles.dart';
 
-class PaymentSummaryWidget extends StatelessWidget {
-  const PaymentSummaryWidget({
+class PickupPaymentWidget extends StatelessWidget {
+  const PickupPaymentWidget({
     super.key,
     required this.price,
-    required this.deliveryFee,
+    required this.serviceFee,
   });
 
   final double price;
-  final double deliveryFee;
+  final double serviceFee;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,6 @@ class PaymentSummaryWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 16),
-        const DiscountWidget(),
         const SizedBox(height: 24),
         Text(
           'Payment Summary',
@@ -69,7 +67,7 @@ class PaymentSummaryWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Delivery Fee',
+              'Service Fee',
               style: GoogleFonts.sora(
                 fontSize: 14,
                 fontWeight: FontWeight.normal,
@@ -78,7 +76,7 @@ class PaymentSummaryWidget extends StatelessWidget {
               ),
             ),
             Text(
-              '\$ $deliveryFee',
+              '\$ $serviceFee',
               style: GoogleFonts.sora(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,

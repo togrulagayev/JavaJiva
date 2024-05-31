@@ -1,4 +1,6 @@
+import 'package:coffee_shop/providers/counter_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../constants/theme/const_colors.dart';
 
@@ -55,36 +57,12 @@ class OrderCountWidget extends StatelessWidget {
   }
 }
 
-class OrderCounterWidget extends StatefulWidget {
-  const OrderCounterWidget({
-    super.key,
-  });
+class OrderCounterWidget extends ConsumerWidget {
+  const OrderCounterWidget({super.key});
 
   @override
-  State<OrderCounterWidget> createState() => _OrderCounterWidgetState();
-}
-
-class _OrderCounterWidgetState extends State<OrderCounterWidget> {
-  int _counter = 1;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    if (_counter == 0) {
-      _counter = 0;
-    } else {
-      setState(() {
-        _counter--;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    int counter = ref.watch(counterProvider);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -93,19 +71,27 @@ class _OrderCounterWidgetState extends State<OrderCounterWidget> {
             backgroundColor: WidgetStateProperty.all(Colors.white),
             foregroundColor: WidgetStateProperty.all(tertiaryTextColor),
           ),
-          onPressed: _decrementCounter,
+          onPressed: () {
+            if (counter == 1) {
+              counter = 1;
+            } else {
+              ref.read(counterProvider.notifier).state--;
+            }
+          },
           icon: const Icon(Icons.remove),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 18, right: 18),
-          child: Text("$_counter"),
+          child: Text("$counter"),
         ),
         IconButton.filled(
           style: ButtonStyle(
             backgroundColor: WidgetStateProperty.all(Colors.white),
             foregroundColor: WidgetStateProperty.all(tertiaryTextColor),
           ),
-          onPressed: _incrementCounter,
+          onPressed: () {
+            ref.read(counterProvider.notifier).state++;
+          },
           icon: const Icon(Icons.add),
         ),
       ],

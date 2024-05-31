@@ -1,10 +1,12 @@
+import 'package:coffee_shop/constants/theme/const_colors.dart';
+import 'package:coffee_shop/constants/typography/const_text_styles.dart';
 import 'package:coffee_shop/widgets/order/delivery_address.dart';
+import 'package:coffee_shop/widgets/order/pickup_pricing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../constants/theme/const_colors.dart';
 import '../../widgets/order/order_appbar.dart';
+import '../../widgets/order/order_confirm.dart';
 import '../../widgets/order/order_count.dart';
 import '../../widgets/order/payment_summary.dart';
 
@@ -17,12 +19,13 @@ class OrderScreen extends StatelessWidget {
   final double price;
   final double deliveryFee = 2.0;
   final double total = 0.0;
-  const OrderScreen(
-      {super.key,
-      required this.url,
-      required this.title,
-      required this.subtitle,
-      required this.price});
+  const OrderScreen({
+    super.key,
+    required this.url,
+    required this.title,
+    required this.subtitle,
+    required this.price,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +35,23 @@ class OrderScreen extends StatelessWidget {
         appBar: const OrderAppBarWidget(),
         body: TabBarView(
           children: [
+            DeliveryWidget(
+                url: url,
+                title: title,
+                subtitle: subtitle,
+                price: price,
+                deliveryFee: deliveryFee),
             Padding(
-              padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
+              padding: const EdgeInsets.all(24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const DeliveryAddressWidget(),
+                  const PickUpLocationsWidget(),
                   const SizedBox(height: 16),
                   OrderCountWidget(url: url, title: title, subtitle: subtitle),
-                  const SizedBox(height: 16),
-                  const Divider(color: Color(0xffF9F2ED), thickness: 4),
-                  PaymentSummaryWidget(price: price, deliveryFee: deliveryFee)
+                  PickupPaymentWidget(price: price, serviceFee: deliveryFee),
                 ],
               ),
-            ),
-            const Center(
-              child: Text('Pickup'),
             ),
           ],
         ),
@@ -58,114 +62,92 @@ class OrderScreen extends StatelessWidget {
   }
 }
 
-class OrderConfirmWidget extends StatelessWidget {
-  final double deliveryFee;
-  final double price;
-
-  const OrderConfirmWidget({
+class PickUpLocationsWidget extends StatelessWidget {
+  const PickUpLocationsWidget({
     super.key,
-    required this.price,
-    required this.deliveryFee,
   });
 
   @override
   Widget build(BuildContext context) {
-    double total = 0.0;
-    total = price + deliveryFee;
-    return SizedBox(
-      height: 200,
-      width: double.infinity,
-      child: Card(
-        margin: EdgeInsets.zero,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Pick up locations', style: primarySemi18),
+        const PickUpAddressWidget(
+          address: '66th St, New York, NY 10065, USA',
+        ),
+        const PickUpAddressWidget(
+          address: '66th St, New York, NY 10065, USA',
+        ),
+        const PickUpAddressWidget(
+          address: '66th St, New York, NY 10065, USA',
+        ),
+        const PickUpAddressWidget(
+          address: '66th St, New York, NY 10065, USA',
+        ),
+      ],
+    );
+  }
+}
+
+class PickUpAddressWidget extends StatelessWidget {
+  final String address;
+  const PickUpAddressWidget({
+    super.key,
+    required this.address,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          address,
+          style: GoogleFonts.sora(
+            fontSize: 14,
+            color: primaryTextColor,
+            fontWeight: FontWeight.normal,
+            height: 3,
           ),
         ),
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  SvgPicture.asset('assets/icons/wallet.svg'),
-                  const SizedBox(width: 16.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Cash/Wallet',
-                        style: GoogleFonts.sora(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          height: 1.5,
-                          color: primaryTextColor,
-                        ),
-                      ),
-                      const SizedBox(height: 4.0),
-                      Text(
-                        '\$ $total',
-                        style: GoogleFonts.sora(
-                          color: buttonBackgroudColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          height: 1.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/icons/arrowDown.svg',
-                      // ignore: deprecated_member_use
-                      color: primaryTextColor,
-                      height: 10,
-                      width: 10,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8.0),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all(
-                          buttonBackgroudColor,
-                        ),
-                        padding: WidgetStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 16.0),
-                        ),
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Order',
-                        style: GoogleFonts.sora(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          height: 1.5,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
+        const Divider(color: Color(0xffF9F2ED), thickness: 4),
+      ],
+    );
+  }
+}
+
+class DeliveryWidget extends StatelessWidget {
+  const DeliveryWidget({
+    super.key,
+    required this.url,
+    required this.title,
+    required this.subtitle,
+    required this.price,
+    required this.deliveryFee,
+  });
+
+  final String url;
+  final String title;
+  final String subtitle;
+  final double price;
+  final double deliveryFee;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const DeliveryAddressWidget(),
+          const SizedBox(height: 16),
+          OrderCountWidget(url: url, title: title, subtitle: subtitle),
+          const SizedBox(height: 16),
+          const Divider(color: Color(0xffF9F2ED), thickness: 4),
+          PaymentSummaryWidget(price: price, deliveryFee: deliveryFee)
+        ],
       ),
     );
   }
