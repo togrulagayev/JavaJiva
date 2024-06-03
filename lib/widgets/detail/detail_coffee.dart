@@ -1,3 +1,5 @@
+import 'package:coffee_shop/constants/typography/const_text_styles.dart';
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,40 +31,47 @@ class DetailCoffeeWidget extends StatelessWidget {
             Text(
               title,
               style: GoogleFonts.sora(
-                fontSize: 20,
+                fontSize: 20.rt,
                 fontWeight: FontWeight.w700,
-                height: 1.5,
+                height: kPrimaryLineHeight,
                 color: primaryTextColor,
               ),
             ),
-            const SizedBox(height: 4.0),
+            SizedBox(height: 4.0.rh),
             Text(
               subtitle,
               style: GoogleFonts.sora(
-                fontSize: 12,
+                fontSize: 12.rt,
                 fontWeight: FontWeight.normal,
-                height: 1.2,
+                height: kSecondaryLineHeight,
                 color: tertiaryTextColor,
               ),
             ),
-            const SizedBox(height: 16.0),
+            SizedBox(height: 16.0.rh),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(
                   'assets/icons/star.svg',
-                  width: 20,
-                  height: 20,
+                  width: 20.rw,
+                  height: 20.rh,
                 ),
-                const SizedBox(width: 4.0),
-                Text(rating),
-                const SizedBox(width: 8.0),
+                SizedBox(width: 4.0.rw),
+                Text(
+                  rating,
+                  style: GoogleFonts.sora(
+                    fontSize: 16.rt,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xff2A2A2A),
+                  ),
+                ),
+                SizedBox(width: 8.0.rw),
                 Text(
                   '($votes )',
                   style: GoogleFonts.sora(
-                    fontSize: 12,
+                    fontSize: 12.rt,
                     fontWeight: FontWeight.normal,
-                    height: 1.2,
+                    height: kSecondaryLineHeight,
                     color: tertiaryTextColor,
                   ),
                 ),
@@ -72,19 +81,10 @@ class DetailCoffeeWidget extends StatelessWidget {
         ),
         const Spacer(),
         const DetailSuperiorityWidget(svg: 'bike'),
-        const SizedBox(width: 16),
+        SizedBox(width: 16.rw),
         const DetailSuperiorityWidget(svg: 'bean'),
-        const SizedBox(width: 16),
+        SizedBox(width: 16.rw),
         const DetailSuperiorityWidget(svg: 'milk'),
-        const SizedBox(height: 16.0),
-        const Center(
-          child: Divider(
-            color: Color(0xffE3E3E3),
-            thickness: 1,
-            indent: 20,
-            endIndent: 20,
-          ),
-        ),
       ],
     );
   }

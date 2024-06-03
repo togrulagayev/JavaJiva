@@ -1,4 +1,5 @@
 import 'package:coffee_shop/providers/counter_provider.dart';
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,25 +24,23 @@ class PaymentSummaryWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 16),
+        SizedBox(height: 16.rh),
         const DiscountWidget(),
-        const SizedBox(height: 24),
+        SizedBox(height: 24.rh),
         Text(
           'Payment Summary',
           style: primarySemi16,
         ),
-        const SizedBox(
-          height: 16,
-        ),
+        SizedBox(height: 16.rh),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               'Price',
               style: GoogleFonts.sora(
-                fontSize: 14,
+                fontSize: 14.rt,
                 fontWeight: FontWeight.normal,
-                height: 1.5,
+                height: 1.5.rh,
                 color: const Color(0xff313131),
               ),
             ),
@@ -52,9 +51,9 @@ class PaymentSummaryWidget extends StatelessWidget {
                 return Text(
                   '\$ ${total.toStringAsFixed(2)}',
                   style: GoogleFonts.sora(
-                    fontSize: 14,
+                    fontSize: 14.rt,
                     fontWeight: FontWeight.bold,
-                    height: 1.5,
+                    height: 1.5.rh,
                     color: primaryTextColor,
                   ),
                 );
@@ -62,27 +61,25 @@ class PaymentSummaryWidget extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        SizedBox(height: 8.rh),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               'Delivery Fee',
               style: GoogleFonts.sora(
-                fontSize: 14,
+                fontSize: 14.rt,
                 fontWeight: FontWeight.normal,
-                height: 1.5,
+                height: 1.5.rh,
                 color: const Color(0xff313131),
               ),
             ),
             Text(
               '\$ $deliveryFee',
               style: GoogleFonts.sora(
-                fontSize: 14,
+                fontSize: 14.rt,
                 fontWeight: FontWeight.bold,
-                height: 1.5,
+                height: 1.5.rh,
                 color: primaryTextColor,
               ),
             ),
@@ -106,8 +103,8 @@ class DiscountWidget extends StatelessWidget {
           child: ElevatedButton.icon(
             style: ButtonStyle(
               elevation: WidgetStateProperty.all(0),
-              padding: const WidgetStatePropertyAll(
-                EdgeInsets.all(20),
+              padding: WidgetStatePropertyAll(
+                EdgeInsets.all(20.rs),
               ),
               backgroundColor: WidgetStateProperty.all(Colors.white),
               side: const WidgetStatePropertyAll(
@@ -120,14 +117,14 @@ class DiscountWidget extends StatelessWidget {
             label: Row(
               children: [
                 SvgPicture.asset('assets/icons/discount.svg'),
-                const SizedBox(width: 16),
+                SizedBox(width: 16.rw),
                 Text(
                   '0 Discount is Applies',
                   style: GoogleFonts.sora(
                     color: const Color(0xff313131),
-                    fontSize: 14,
+                    fontSize: 14.rt,
                     fontWeight: FontWeight.bold,
-                    height: 1.5,
+                    height: 1.5.rh,
                   ),
                 ),
               ],

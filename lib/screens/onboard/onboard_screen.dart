@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/onboard/button.dart';
@@ -9,29 +10,34 @@ class OnboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double sh = MediaQuery.of(context).size.height;
-    final double sw = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xff000000),
-      body: Column(
-        children: [
-          OnboardImageWidget(sh: sh),
-          SizedBox(
-            height: sh * 0.34,
-            width: sw,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const OnboardTextWidget(),
-                const SizedBox(height: 8),
-                const OnboardSubTextWidget(),
-                const SizedBox(height: 32),
-                OnboardButtonWidget(sw: sw, sh: sh),
-              ],
-            ),
-          )
-        ],
+      body: SizedBox(
+        height: 812.rh,
+        width: 375.rw,
+        child: Stack(
+          children: [
+            const OnboardImageWidget(),
+            Positioned(
+              top: 452.rh,
+              child: SizedBox(
+                height: 360.rh,
+                width: 375.rw,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const OnboardTextWidget(),
+                    SizedBox(height: 8.rh),
+                    const OnboardSubTextWidget(),
+                    SizedBox(height: 32.rh),
+                    const OnboardButtonWidget(),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

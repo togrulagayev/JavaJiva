@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,29 +9,23 @@ import '../../constants/typography/const_text_styles.dart';
 class HomeSearchWidget extends StatelessWidget {
   const HomeSearchWidget({
     super.key,
-    required this.sh,
-    required this.sw,
   });
-
-  final double sh;
-  final double sw;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         SizedBox(
-          height: sh * 0.064,
-          width: sw * 0.69,
+          height: 52.rh,
+          width: 259.rw,
           child: TextFormField(
             style: GoogleFonts.sora(
               color: tertiaryTextColor,
-              fontSize: 16,
-              letterSpacing: 0,
-              height: kSecondaryLineHeight,
+              fontSize: 16.rt,
+              height: 1.2.rh,
             ),
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(16.0),
+              contentPadding: EdgeInsets.all(16.0.rs),
               prefixIcon: IconButton(
                 onPressed: () {},
                 icon: SvgPicture.asset(
@@ -40,25 +35,24 @@ class HomeSearchWidget extends StatelessWidget {
               hintText: 'Search coffee',
               hintStyle: GoogleFonts.sora(
                 color: tertiaryTextColor,
-                fontSize: 14,
-                letterSpacing: 0,
+                fontSize: 14.rt,
                 height: kSecondaryLineHeight,
               ),
               filled: true,
               fillColor: secondaryTextColor,
-              border: const OutlineInputBorder(
+              border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
-                  Radius.circular(12.0),
+                  Radius.circular(12.0.rs),
                 ),
                 borderSide: BorderSide.none,
               ),
             ),
           ),
         ),
-        const SizedBox(width: 16.0),
+        SizedBox(width: 16.0.rw),
         SizedBox(
-          height: sh * 0.064,
-          width: sw * 0.139,
+          height: 52.rh,
+          width: 52.rw,
           child: IconButton.filled(
             onPressed: () {},
             icon: SvgPicture.asset(
@@ -68,7 +62,7 @@ class HomeSearchWidget extends StatelessWidget {
               backgroundColor: WidgetStateProperty.all(buttonBackgroudColor),
               shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(12.0.rs),
                 ),
               ),
             ),

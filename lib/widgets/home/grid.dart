@@ -1,6 +1,7 @@
 import 'package:coffee_shop/constants/typography/const_text_styles.dart';
 import 'package:coffee_shop/screens/detail/detail_screen.dart';
 import 'package:coffee_shop/services/api_service.dart';
+import 'package:flexify/flexify.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,12 +13,7 @@ import '../../model/types_model.dart';
 class HomeGridWidget extends StatefulWidget {
   const HomeGridWidget({
     super.key,
-    required this.sw,
-    required this.sh,
   });
-
-  final double sw;
-  final double sh;
 
   @override
   State<HomeGridWidget> createState() => _HomeGridWidgetState();
@@ -47,13 +43,13 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
           } else if (snapshot.hasData) {
             final data = snapshot.data!;
             return SizedBox(
-              height: widget.sh * 0.4,
+              height: 320.rh,
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisExtent: widget.sh * 0.3,
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 24,
+                  mainAxisExtent: 250.rh,
+                  crossAxisSpacing: 15.rs,
+                  mainAxisSpacing: 24.rs,
                 ),
                 itemCount: data.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -75,34 +71,35 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                       );
                     },
                     child: ClipRRect(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(16.0),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(16.0.rs),
                       ),
                       child: Card(
                         color: Colors.white,
                         elevation: 4,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(8.0.rs),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Center(
                                 child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(12.0),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(12.0.rs),
                                   ),
                                   child: Stack(
                                     children: [
                                       Image.network(
                                         data[index].imageUrl,
-                                        height: 150,
+                                        height: 140.rh,
+                                        width: 128.rw,
                                         fit: BoxFit.cover,
                                       ),
                                       Align(
                                         alignment: Alignment.topRight,
                                         child: Container(
-                                          width: widget.sw * 0.135,
-                                          height: widget.sh * 0.034,
+                                          width: 51.rw,
+                                          height: 28.rh,
                                           decoration: BoxDecoration(
                                             gradient: LinearGradient(
                                               colors: [
@@ -114,9 +111,9 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                                               begin: Alignment.topRight,
                                               end: Alignment.bottomLeft,
                                             ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              bottomLeft: Radius.circular(14),
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft:
+                                                  Radius.circular(14.rs),
                                             ),
                                           ),
                                           child: Padding(
@@ -126,17 +123,17 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                                               children: [
                                                 SvgPicture.asset(
                                                   'assets/icons/star.svg',
-                                                  width: widget.sh * 0.017,
-                                                  height: widget.sh * 0.017,
+                                                  width: 12.rw,
+                                                  height: 12.rh,
                                                 ),
-                                                const SizedBox(width: 4),
+                                                SizedBox(width: 4.rw),
                                                 Text(
                                                   data[index].rating.toString(),
                                                   style: GoogleFonts.sora(
-                                                      color: Colors.white,
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.w700),
+                                                    color: Colors.white,
+                                                    fontSize: 12.rt,
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -147,14 +144,14 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 8),
+                              SizedBox(height: 8.rh),
                               Text(
                                 data[index].title,
                                 style: primarySemi16,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                               ),
-                              const SizedBox(height: 4),
+                              SizedBox(height: 4.rh),
                               Text(
                                 data[index].subTitle,
                                 style: primarySemi12,
@@ -172,12 +169,12 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
                                   ),
-                                  SizedBox(width: widget.sw * 0.085),
+                                  SizedBox(width: 32.rw),
                                   SizedBox(
-                                    height: widget.sh * 0.039,
-                                    width: widget.sw * 0.085,
+                                    height: 32.rh,
+                                    width: 32.rw,
                                     child: IconButton.filled(
-                                      iconSize: 16,
+                                      iconSize: 16.rs,
                                       style: ButtonStyle(
                                         backgroundColor:
                                             WidgetStateProperty.all(
@@ -185,7 +182,7 @@ class _HomeGridWidgetState extends State<HomeGridWidget> {
                                         shape: WidgetStateProperty.all(
                                           RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(12.0),
+                                                BorderRadius.circular(12.0.rs),
                                           ),
                                         ),
                                       ),

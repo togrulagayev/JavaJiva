@@ -1,19 +1,15 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/theme/const_colors.dart';
-import '../../constants/typography/const_text_styles.dart';
 import '../../screens/home/home_screen.dart';
 
 class OnboardButtonWidget extends StatelessWidget {
   const OnboardButtonWidget({
     super.key,
-    required this.sw,
-    required this.sh,
   });
-
-  final double sw;
-  final double sh;
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +19,16 @@ class OnboardButtonWidget extends StatelessWidget {
         foregroundColor: WidgetStateProperty.all(buttonForegroudColor),
         shape: WidgetStateProperty.all(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(16.rs),
           ),
         ),
         minimumSize: WidgetStateProperty.all(
-          Size(sw * 0.8, sh * 0.07),
+          Size(327.rw, 56.rh),
         ),
         padding: WidgetStateProperty.all(
-          const EdgeInsets.symmetric(
-            vertical: 16,
-            horizontal: 20,
+          EdgeInsets.symmetric(
+            vertical: 16.rs,
+            horizontal: 20.rs,
           ),
         ),
       ),
@@ -46,7 +42,12 @@ class OnboardButtonWidget extends StatelessWidget {
       },
       child: Text(
         'Get Started',
-        style: whiteSemi16,
+        style: GoogleFonts.sora(
+          fontSize: 16.rt,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+          height: 1.5.rh,
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:coffee_shop/constants/theme/const_colors.dart';
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,8 +14,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double sh = MediaQuery.of(context).size.height;
-    final double sw = MediaQuery.of(context).size.width;
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(
@@ -22,58 +21,57 @@ class HomeScreen extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  width: sw,
-                  height: sh * 0.345,
-                  decoration: const BoxDecoration(
-                    // color: Color(0xFF111111),
+                  width: 375.rw,
+                  height: 280.rh,
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Color(0xFF111111),
-                        Color(0xFF111111),
+                        const Color(0xFF111111),
+                        const Color(0xFF111111).withOpacity(0.90),
                       ],
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
-                      stops: [.0, 1.0],
+
                       // tileMode: TileMode.decal,
                     ),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                    left: sw * 0.064,
-                    right: sw * 0.064,
-                    top: sh * 0.084,
+                    left: 24.0.rw,
+                    right: 24.0.rw,
+                    top: 68.0.rh,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const HomeLocationWidget(),
-                      const SizedBox(height: 24.0),
-                      HomeSearchWidget(sh: sh, sw: sw),
-                      const SizedBox(height: 24.0),
+                      SizedBox(height: 24.0.rh),
+                      const HomeSearchWidget(),
+                      SizedBox(height: 24.0.rh),
                       ClipRRect(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(16.0),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(16.0.rs),
                         ),
                         child: Stack(
                           children: [
                             Image.asset(
                               'assets/images/banner.png',
                               fit: BoxFit.cover,
-                              width: sw * 0.872,
+                              width: 327.rw,
+                              height: 120.rh,
                             ),
                             SvgPicture.asset(
                               'assets/icons/banner.svg',
-                              width: sw * 0.872,
+                              width: 327.rw,
+                              height: 120.rh,
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      HomeCategoriesWidget(sw: sw, sh: sh),
-                      HomeGridWidget(sw: sw, sh: sh),
+                      SizedBox(height: 24.rh),
+                      const HomeCategoriesWidget(),
+                      const HomeGridWidget(),
                     ],
                   ),
                 ),
@@ -81,32 +79,37 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          backgroundColor: Colors.white,
-          onTap: (value) {},
-          currentIndex: 0,
-          iconSize: 24,
-          selectedItemColor: buttonBackgroudColor,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/home.svg'),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/fav.svg'),
-              label: 'Favorite',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/bag.svg'),
-              label: 'Cart',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/icons/bell.svg'),
-              label: 'Notification',
-            ),
-          ],
+        bottomNavigationBar: Container(
+          height: 99.rh,
+          width: 375.rw,
+          decoration: const BoxDecoration(),
+          child: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            backgroundColor: Colors.white,
+            onTap: (value) {},
+            currentIndex: 0,
+            iconSize: 24.rs,
+            selectedItemColor: buttonBackgroudColor,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/home.svg'),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/fav.svg'),
+                label: 'Favorite',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/bag.svg'),
+                label: 'Cart',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset('assets/icons/bell.svg'),
+                label: 'Notification',
+              ),
+            ],
+          ),
         ));
   }
 }

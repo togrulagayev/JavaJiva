@@ -1,4 +1,5 @@
 import 'package:coffee_shop/constants/theme/const_colors.dart';
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,7 +29,8 @@ class _DetailCoffeeSizeWidgetState extends State<DetailCoffeeSizeWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 41.rh,
+      width: 320.rw,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
@@ -42,12 +44,13 @@ class _DetailCoffeeSizeWidgetState extends State<DetailCoffeeSizeWidget> {
               });
             },
             child: Container(
-              margin: const EdgeInsets.only(right: 30),
-              width: 96,
-              height: 41,
+              margin: EdgeInsets.only(right: 16.rw),
+              width: 96.rw,
+              height: 41.rh,
+              constraints: BoxConstraints(minHeight: 41.rh, minWidth: 96.rw),
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(12),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12.rs),
                 ),
                 border: Border.all(
                   color: selectedIndex == index
@@ -61,9 +64,10 @@ class _DetailCoffeeSizeWidgetState extends State<DetailCoffeeSizeWidget> {
                 child: Text(
                   sizeList[index],
                   style: GoogleFonts.sora(
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                      color: primaryTextColor),
+                    fontSize: 14.rt,
+                    fontWeight: FontWeight.normal,
+                    color: primaryTextColor,
+                  ),
                 ),
               ),
             ),

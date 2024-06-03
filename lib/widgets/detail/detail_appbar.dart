@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,7 +13,7 @@ class DetailAppBarWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+      padding: EdgeInsets.only(left: 24.0.rw, right: 24.0.rw),
       child: AppBar(
         title: Text(
           'Detail',
@@ -20,6 +21,7 @@ class DetailAppBarWidget extends StatelessWidget
         ),
         centerTitle: true,
         leading: IconButton(
+          iconSize: 24.rs,
           icon: SvgPicture.asset('assets/icons/arrowBack.svg'),
           onPressed: () {
             Navigator.pop(context);
@@ -27,6 +29,7 @@ class DetailAppBarWidget extends StatelessWidget
         ),
         actions: [
           IconButton(
+            iconSize: 24.rs,
             icon: SvgPicture.asset('assets/icons/fav.svg'),
             onPressed: () {},
           ),

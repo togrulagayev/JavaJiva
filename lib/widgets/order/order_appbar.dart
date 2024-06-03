@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +13,7 @@ class OrderAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsets.symmetric(horizontal: 24.rw),
       child: AppBar(
         title: Text(
           'Order',
@@ -22,6 +23,8 @@ class OrderAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         leading: IconButton(
           icon: SvgPicture.asset(
             'assets/icons/arrowBack.svg',
+            width: 24.rw,
+            height: 24.rh,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -30,33 +33,34 @@ class OrderAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: Padding(
-            padding: const EdgeInsets.only(top: 24),
+            padding: EdgeInsets.only(top: 24.rh),
             child: Container(
-              height: 43,
-              decoration: const BoxDecoration(
-                color: Color(0xFFEDEDED),
+              height: 43.rh,
+              width: 327.rw,
+              decoration: BoxDecoration(
+                color: const Color(0xFFEDEDED),
                 borderRadius: BorderRadius.all(
-                  Radius.circular(12),
+                  Radius.circular(12.rs),
                 ),
               ),
               child: TabBar(
                 dividerHeight: 0,
                 labelColor: const Color(0xFFFFFFFF),
-                indicator: const BoxDecoration(
-                  color: Color(0xFFC67C4E),
+                indicator: BoxDecoration(
+                  color: const Color(0xFFC67C4E),
                   borderRadius: BorderRadius.all(
-                    Radius.circular(8),
+                    Radius.circular(8.rs),
                   ),
                 ),
-                indicatorPadding: const EdgeInsets.all(4),
+                indicatorPadding: EdgeInsets.all(4.rs),
                 indicatorSize: TabBarIndicatorSize.tab,
                 tabs: [
                   Tab(
                     child: Text(
                       'Deliver',
                       style: GoogleFonts.sora(
-                        fontSize: 16,
-                        height: 1.2,
+                        fontSize: 16.rt,
+                        height: kSecondaryLineHeight,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -65,8 +69,8 @@ class OrderAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                     child: Text(
                       'Pick Up',
                       style: GoogleFonts.sora(
-                        fontSize: 16,
-                        height: 1.2,
+                        fontSize: 16.rt,
+                        height: kSecondaryLineHeight,
                         fontWeight: FontWeight.w700,
                       ),
                     ),

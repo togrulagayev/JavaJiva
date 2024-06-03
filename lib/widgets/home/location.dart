@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,28 +21,26 @@ class HomeLocationWidget extends StatelessWidget {
           'Location',
           style: GoogleFonts.sora(
             color: tertiaryTextColor,
-            fontSize: 12,
-            letterSpacing: kDefaultLetterSpacing,
+            fontSize: 12.rt,
             height: kSecondaryLineHeight,
           ),
         ),
-        const SizedBox(height: 8.0),
+        SizedBox(height: 8.0.rh),
         Row(
           children: [
             Text(
               'Baku, Azerbaijan',
               style: GoogleFonts.sora(
                 color: const Color(0xFFD8D8D8),
-                fontSize: 14,
-                letterSpacing: 0,
+                fontSize: 14.rt,
                 fontWeight: FontWeight.w600,
-                height: kPrimaryLineHeight,
+                height: 1.5.rh,
               ),
             ),
-            const SizedBox(width: 8.0),
+            SizedBox(width: 8.0.rw),
             SizedBox(
-              width: 14.0,
-              height: 14.0,
+              width: 14.0.rw,
+              height: 14.0.rh,
               child: SvgPicture.asset(
                 'assets/icons/arrowDown.svg',
               ),

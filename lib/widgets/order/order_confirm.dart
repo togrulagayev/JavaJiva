@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,45 +23,45 @@ class OrderConfirmWidget extends ConsumerWidget {
     double total = ref.watch(totalPriceProvider);
     total = (price * counter) + deliveryFee;
     return SizedBox(
-      height: 200,
-      width: double.infinity,
+      height: 165.rh,
+      width: 375.rw,
       child: Card(
         margin: EdgeInsets.zero,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
+            topLeft: Radius.circular(24.rs),
+            topRight: Radius.circular(24.rs),
           ),
         ),
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: 24.0.rw, vertical: 20.0.rh),
           child: Column(
             children: [
               Row(
                 children: [
                   SvgPicture.asset('assets/icons/wallet.svg'),
-                  const SizedBox(width: 16.0),
+                  SizedBox(width: 16.0.rw),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Cash/Wallet',
                         style: GoogleFonts.sora(
-                          fontSize: 14,
+                          fontSize: 14.rt,
                           fontWeight: FontWeight.bold,
-                          height: 1.5,
+                          height: 1.5.rh,
                           color: primaryTextColor,
                         ),
                       ),
-                      const SizedBox(height: 4.0),
+                      SizedBox(height: 4.0.rh),
                       Text(
                         '\$ ${total.toStringAsFixed(2)}',
                         style: GoogleFonts.sora(
                           color: buttonBackgroudColor,
-                          fontSize: 12,
+                          fontSize: 12.rt,
                           fontWeight: FontWeight.w700,
-                          height: 1.5,
+                          height: 1.5.rh,
                         ),
                       ),
                     ],
@@ -72,13 +73,13 @@ class OrderConfirmWidget extends ConsumerWidget {
                       'assets/icons/arrowDown.svg',
                       // ignore: deprecated_member_use
                       color: primaryTextColor,
-                      height: 10,
-                      width: 10,
+                      height: 10.rh,
+                      width: 10.rw,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8.0),
+              SizedBox(height: 8.0.rh),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -89,12 +90,12 @@ class OrderConfirmWidget extends ConsumerWidget {
                           buttonBackgroudColor,
                         ),
                         padding: WidgetStateProperty.all(
-                          const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 16.0),
+                          EdgeInsets.symmetric(
+                              horizontal: 24.0.rw, vertical: 16.0.rh),
                         ),
                         shape: WidgetStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(16.rs),
                           ),
                         ),
                       ),
@@ -102,9 +103,9 @@ class OrderConfirmWidget extends ConsumerWidget {
                       child: Text(
                         'Order',
                         style: GoogleFonts.sora(
-                          fontSize: 16,
+                          fontSize: 16.rt,
                           fontWeight: FontWeight.bold,
-                          height: 1.5,
+                          height: 1.5.rh,
                           color: Colors.white,
                         ),
                       ),

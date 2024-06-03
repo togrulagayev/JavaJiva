@@ -1,6 +1,9 @@
+import 'package:coffee_shop/constants/typography/const_text_styles.dart';
 import 'package:coffee_shop/providers/counter_provider.dart';
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/theme/const_colors.dart';
 
@@ -21,30 +24,30 @@ class OrderCountWidget extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 54,
-          height: 54,
+          width: 54.rw,
+          height: 54.rh,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.rs),
             child: Image.network(url, fit: BoxFit.cover),
           ),
         ),
-        const SizedBox(width: 16),
+        SizedBox(width: 16.rw),
         Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: 16.rt,
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.rh),
             Text(
               subtitle,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: 14.rt,
                 color: Colors.grey,
               ),
             ),
@@ -81,8 +84,16 @@ class OrderCounterWidget extends ConsumerWidget {
           icon: const Icon(Icons.remove),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 18, right: 18),
-          child: Text("$counter"),
+          padding: EdgeInsets.only(left: 18.rw, right: 18.rw),
+          child: Text(
+            "$counter",
+            style: GoogleFonts.sora(
+              fontSize: 14.rt,
+              color: primaryTextColor,
+              fontWeight: FontWeight.bold,
+              height: kPrimaryLineHeight,
+            ),
+          ),
         ),
         IconButton.filled(
           style: ButtonStyle(

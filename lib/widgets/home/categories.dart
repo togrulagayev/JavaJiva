@@ -1,4 +1,5 @@
 import 'package:coffee_shop/constants/theme/const_colors.dart';
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/typography/const_text_styles.dart';
@@ -7,12 +8,7 @@ import '../../services/api_service.dart';
 class HomeCategoriesWidget extends StatefulWidget {
   const HomeCategoriesWidget({
     super.key,
-    required this.sw,
-    required this.sh,
   });
-
-  final double sw;
-  final double sh;
 
   @override
   State<HomeCategoriesWidget> createState() => _HomeCategoriesWidgetState();
@@ -44,16 +40,16 @@ class _HomeCategoriesWidgetState extends State<HomeCategoriesWidget> {
         } else if (snapshot.hasData) {
           var data = snapshot.data!;
           return SizedBox(
-            width: widget.sw * 0.872,
-            height: widget.sh * 0.037,
+            width: 327.rw,
+            height: 35.rh,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               // shrinkWrap: true,
               itemCount: data.length,
-              padding: const EdgeInsets.all(4),
+              padding: EdgeInsets.all(4.rs),
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
+                  padding: EdgeInsets.only(right: 16.0.rs),
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor: WidgetStatePropertyAll(
@@ -66,9 +62,12 @@ class _HomeCategoriesWidgetState extends State<HomeCategoriesWidget> {
                             ? Colors.white
                             : const Color(0xFF313131),
                       ),
+                      minimumSize: WidgetStateProperty.all(
+                        Size(double.minPositive, 29.0.rh),
+                      ),
                       shape: WidgetStateProperty.all(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(6.0),
+                          borderRadius: BorderRadius.circular(6.0.rs),
                         ),
                       ),
                       textStyle: WidgetStateProperty.all(

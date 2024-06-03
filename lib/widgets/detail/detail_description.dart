@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/typography/const_text_styles.dart';
@@ -20,7 +21,7 @@ class DetailDescriptionWidget extends StatelessWidget {
           'Description',
           style: primarySemi16,
         ),
-        const SizedBox(height: 8.0),
+        SizedBox(height: 8.0.rh),
         Text(
           description,
           style: secondary14,
