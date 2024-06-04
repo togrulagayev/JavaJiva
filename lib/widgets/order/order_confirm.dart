@@ -1,4 +1,5 @@
 import 'package:flexify/flexify.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/theme/const_colors.dart';
 import '../../providers/counter_provider.dart';
+import '../../screens/delivery/delivery_screen.dart';
+import '../../screens/pickup/pickup_screen.dart';
 
 class OrderConfirmWidget extends ConsumerWidget {
   final double deliveryFee;
@@ -19,6 +22,7 @@ class OrderConfirmWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    bool isDelivery = ref.watch(orederTypeProvider);
     int counter = ref.watch(counterProvider);
     double total = ref.watch(totalPriceProvider);
     total = (price * counter) + deliveryFee;
@@ -99,7 +103,23 @@ class OrderConfirmWidget extends ConsumerWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (isDelivery) {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => const DeliveryScreen(),
+                            ),
+                          );
+                        } else {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => const PickupScreen(),
+                            ),
+                          );
+                        }
+                      },
                       child: Text(
                         'Order',
                         style: GoogleFonts.sora(

@@ -1,5 +1,7 @@
+import 'package:coffee_shop/providers/counter_provider.dart';
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -43,39 +45,54 @@ class OrderAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                   Radius.circular(12.rs),
                 ),
               ),
-              child: TabBar(
-                dividerHeight: 0,
-                labelColor: const Color(0xFFFFFFFF),
-                indicator: BoxDecoration(
-                  color: const Color(0xFFC67C4E),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8.rs),
-                  ),
-                ),
-                indicatorPadding: EdgeInsets.all(4.rs),
-                indicatorSize: TabBarIndicatorSize.tab,
-                tabs: [
-                  Tab(
-                    child: Text(
-                      'Deliver',
-                      style: GoogleFonts.sora(
-                        fontSize: 16.rt,
-                        height: kSecondaryLineHeight,
-                        fontWeight: FontWeight.w700,
+              child: Consumer(
+                builder: (context, ref, child) {
+                  return TabBar(
+                    dividerHeight: 0,
+                    labelColor: const Color(0xFFFFFFFF),
+                    indicator: BoxDecoration(
+                      color: const Color(0xFFC67C4E),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.rs),
                       ),
                     ),
-                  ),
-                  Tab(
-                    child: Text(
-                      'Pick Up',
-                      style: GoogleFonts.sora(
-                        fontSize: 16.rt,
-                        height: kSecondaryLineHeight,
-                        fontWeight: FontWeight.w700,
+                    indicatorPadding: EdgeInsets.all(4.rs),
+                    indicatorSize: TabBarIndicatorSize.tab,
+                    tabs: [
+                      InkWell(
+                        onTap: () {
+                          ref.watch(orederTypeProvider.notifier).state = true;
+                        },
+                        child: Tab(
+                          child: Text(
+                            'Deliver',
+                            style: GoogleFonts.sora(
+                              fontSize: 16.rt,
+                              height: kSecondaryLineHeight,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ],
+                      InkWell(
+                        onTap: () {
+                          ref.watch(orederTypeProvider.notifier).state = false;
+                        },
+                        
+                        child: Tab(
+                          child: Text(
+                            'Pick Up',
+                            style: GoogleFonts.sora(
+                              fontSize: 16.rt,
+                              height: kSecondaryLineHeight,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),

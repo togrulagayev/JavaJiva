@@ -1,3 +1,4 @@
+import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -48,13 +49,13 @@ class PickUpAddressWidget extends StatelessWidget {
         Text(
           address,
           style: GoogleFonts.sora(
-            fontSize: 14,
+            fontSize: 14.rt,
             color: primaryTextColor,
             fontWeight: FontWeight.normal,
-            height: 3,
+            height: 3.rh,
           ),
         ),
-        const Divider(color: Color(0xffF9F2ED), thickness: 4),
+         Divider(color: Color(0xffF9F2ED), thickness: 4.rh),
       ],
     );
   }
